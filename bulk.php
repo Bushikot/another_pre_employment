@@ -8,7 +8,7 @@
  */
 
 if (!extension_loaded('PDO')) {
-	throw new Exception('PDO extension not found');
+    throw new Exception('PDO extension not found');
 }
 
 $pdo = new PDO('sqlite::memory:');
@@ -30,22 +30,22 @@ $pdo = new PDO('sqlite::memory:');
 //");
 
 $users = array(
-	@$_GET['user1'],
-	@$_GET['user2'],
-	@$_GET['user3']
+    @$_GET['user1'],
+    @$_GET['user2'],
+    @$_GET['user3']
 );
 
 $users = array_filter($users);
 
 if (!empty($users)) {
-	$paramsBindings = str_repeat('?, ', count($users) - 1) . '?';
+    $paramsBindings = str_repeat('?, ', count($users) - 1) . '?';
 
-	$query = $pdo->prepare("SELECT name FROM users WHERE user IN ({$paramsBindings})");
+    $query = $pdo->prepare("SELECT name FROM users WHERE user IN ({$paramsBindings})");
 
-	$query->execute($users);
-	$foundUsers = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->execute($users);
+    $foundUsers = $query->fetchAll(PDO::FETCH_ASSOC);
 
-	foreach ($foundUsers as $user) {
-		print $user['name'] . "<br>";
-	}
+    foreach ($foundUsers as $user) {
+        print $user['name'] . "<br>";
+    }
 }

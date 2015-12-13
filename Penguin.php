@@ -35,38 +35,38 @@ class Penguin implements \bird
         return $this->kind;
     }
 
-	function getLocation()
+    function getLocation()
     {
         return $this->location;
     }
 
-	function setLocation(Location $location)
+    function setLocation(Location $location)
     {
         $this->location = $location;
     }
 
-	function flyTo(Location $location)
+    function flyTo(Location $location)
     {
         //Нужно дописать
     }
 
-	function setMelody(string $melody)
+    function setMelody(string $melody)
     {
         $this->melody = $melody;
     }
 
-	function singMelody()
+    function singMelody()
     {
         echo $this->melody;
     }
 
-	function killBird()
+    function killBird()
     {
         $this->alive = false;
         $this->location->setZ(0); //mwahahaha
     }
 
-	function cloneBird(int $count)
+    function cloneBird(int $count)
     {
         $birds = [];
 
